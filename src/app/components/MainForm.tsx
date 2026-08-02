@@ -6,11 +6,11 @@ import { Card } from "./ui/card";
 import { CitySearch } from "./CitySearch";
 import { Checkbox } from "./ui/checkbox";
 import { useState } from "react";
-import { CheckCircle2, AlertTriangle, Phone, Mail } from "lucide-react";
+import { useNavigate } from "react-router";
 import { analytics } from "../utils/analytics";
 
 export function MainForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
   const [isCityValid, setIsCityValid] = useState(false);
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
@@ -74,8 +74,7 @@ export function MainForm() {
 
       if (response.ok) {
         analytics.formSuccess('main');
-        setSubmitted(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        navigate('/obrigado');
       } else {
         analytics.formError('main', `HTTP ${response.status}`);
         alert("Erro ao enviar formulário. Por favor, tente novamente.");
@@ -88,61 +87,6 @@ export function MainForm() {
       setIsSubmitting(false);
     }
   };
-
-  if (submitted) {
-    return (
-      <section id="formulario" className="py-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="bg-white rounded-2xl shadow-lg p-10 text-center">
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
-                <CheckCircle2 className="w-12 h-12 text-green-600" />
-              </div>
-            </div>
-            <h2 className="text-green-600 mb-3 font-bold">Solicitação Recebida com Sucesso!</h2>
-            <p className="text-gray-700 text-lg mb-8">Obrigado por confiar na <strong>PlacaMercosul</strong>!</p>
-
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6 text-left">
-              <h3 className="text-blue-900 font-bold mb-4">📋 Próximos Passos</h3>
-              <ol className="space-y-3 text-gray-700">
-                {["Nossa equipe irá analisar sua solicitação", "Você receberá um contato em até 24 horas úteis", "Apresentaremos as melhores opções e valores", "Após sua aprovação, iniciaremos o emplacamento"].map((step, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm">{i + 1}</span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <div className="bg-amber-50 border-2 border-amber-400 rounded-lg p-5 mb-6 text-left">
-              <div className="flex gap-2 mb-2">
-                <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                <span className="text-amber-900 font-bold text-sm">⚠️ Aviso Importante</span>
-              </div>
-              <p className="text-gray-800 text-sm"><strong>NÃO efetue nenhum pagamento</strong> antes de receber o contato oficial de nossos especialistas.</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <Phone className="w-5 h-5 text-blue-600" />
-                <div className="text-left">
-                  <p className="text-xs text-gray-600">WhatsApp</p>
-                  <p className="text-gray-900 font-medium">(11) 99999-9999</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <Mail className="w-5 h-5 text-blue-600" />
-                <div className="text-left">
-                  <p className="text-xs text-gray-600">E-mail</p>
-                  <p className="text-gray-900 font-medium">contato@placamercosul.com.br</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="formulario" className="py-20 bg-gray-50">

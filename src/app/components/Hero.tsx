@@ -2,17 +2,18 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Shield, CheckCircle, CheckCircle2, MapPin, Clock, Users, Star, ArrowRight, Zap, AlertTriangle, Phone, Mail } from "lucide-react";
+import { Shield, CheckCircle, MapPin, Clock, Users, Star, ArrowRight, Zap } from "lucide-react";
 import { CitySearch } from "./CitySearch";
 import { Checkbox } from "./ui/checkbox";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import placaMercosul from 'figma:asset/eb21452ab613631b27c068573972131f148a38df.png';
 import { AnimatedBackground } from "./AnimatedBackground";
 import { motion } from "motion/react";
 import { analytics } from "../utils/analytics";
 
 export function Hero() {
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
   const [isCityValid, setIsCityValid] = useState(false);
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
@@ -79,8 +80,7 @@ export function Hero() {
       if (response.ok) {
         // 5. Evento: form_success
         analytics.formSuccess('hero');
-        setSubmitted(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        navigate('/obrigado');
       } else {
         // 6. Evento: form_error
         analytics.formError('hero', `HTTP ${response.status}`);
@@ -95,75 +95,6 @@ export function Hero() {
       setIsSubmitting(false);
     }
   };
-
-  if (submitted) {
-    return (
-      <section id="inicio" className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 pt-20 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/98 to-blue-800/98" />
-        <AnimatedBackground />
-        <div className="max-w-3xl mx-auto px-6 relative z-10 py-16">
-          <motion.div
-            className="bg-white rounded-2xl shadow-2xl p-10 text-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
-                <CheckCircle2 className="w-12 h-12 text-green-600" />
-              </div>
-            </div>
-            <h1 className="text-green-600 mb-3 text-3xl font-bold">Solicitação Recebida com Sucesso!</h1>
-            <p className="text-gray-700 text-lg mb-8">Obrigado por confiar na <strong>PlacaMercosul</strong>!</p>
-
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6 text-left">
-              <h2 className="text-blue-900 font-bold mb-4 text-lg">📋 Próximos Passos</h2>
-              <ol className="space-y-3 text-gray-700">
-                {["Nossa equipe de especialistas irá analisar sua solicitação", "Você receberá um contato em até 24 horas úteis", "Apresentaremos as melhores opções e valores para seu emplacamento", "Após sua aprovação, iniciaremos o processo de emplacamento"].map((step, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm">{i + 1}</span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <div className="bg-amber-50 border-2 border-amber-400 rounded-lg p-6 mb-6 text-left">
-              <div className="flex gap-3 mb-3">
-                <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0" />
-                <h2 className="text-amber-900 font-bold">⚠️ Aviso Importante</h2>
-              </div>
-              <p className="text-gray-800 text-sm"><strong>NÃO efetue nenhum tipo de pagamento</strong> antes de receber o contato oficial de nossos especialistas. Desconfie de mensagens solicitando pagamentos antecipados.</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <Phone className="w-5 h-5 text-blue-600" />
-                <div className="text-left">
-                  <p className="text-sm text-gray-600">WhatsApp</p>
-                  <p className="text-gray-900 font-medium">(11) 99999-9999</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <Mail className="w-5 h-5 text-blue-600" />
-                <div className="text-left">
-                  <p className="text-sm text-gray-600">E-mail</p>
-                  <p className="text-gray-900 font-medium">contato@placamercosul.com.br</p>
-                </div>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setSubmitted(false)}
-              className="text-blue-600 hover:text-blue-700 text-sm underline"
-            >
-              Voltar ao início
-            </button>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section
