@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
-import { CheckCircle2, AlertTriangle, Phone, Mail, ArrowLeft } from "lucide-react";
+import { CheckCircle2, AlertTriangle } from "lucide-react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import logoPlacaMercosul from "figma:asset/57bdf21bb52564097625e6c71a1731475661ae9e.png";
@@ -101,42 +101,6 @@ export function ThankYou() {
                 <span>Guarde bem este lembrete: <strong>aguarde nosso contato oficial</strong> antes de qualquer ação</span>
               </li>
             </ul>
-          </div>
-
-          {/* Informações de Contato */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 mb-8">
-            <h3 className="text-gray-900 mb-4">
-              📞 Dúvidas? Entre em Contato
-            </h3>
-            
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <Phone className="w-5 h-5 text-blue-600" />
-                <div>
-                  <p className="text-sm text-gray-600">WhatsApp</p>
-                  <p className="text-gray-900">(11) 99999-9999</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <Mail className="w-5 h-5 text-blue-600" />
-                <div>
-                  <p className="text-sm text-gray-600">E-mail</p>
-                  <p className="text-gray-900">contato@placamercosul.com.br</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Botão Voltar */}
-          <div className="text-center">
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Voltar para a página inicial
-            </Link>
           </div>
         </div>
       </main>
