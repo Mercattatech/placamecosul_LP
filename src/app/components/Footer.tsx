@@ -23,22 +23,22 @@ export function Footer() {
             <h4 className="text-white mb-4">Links úteis</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#inicio" className="text-blue-200 hover:text-white transition-colors">
+                <a href="/#inicio" className="text-blue-200 hover:text-white transition-colors">
                   Início
                 </a>
               </li>
               <li>
-                <a href="#como-funciona" className="text-blue-200 hover:text-white transition-colors">
+                <a href="/#como-funciona" className="text-blue-200 hover:text-white transition-colors">
                   Como funciona
                 </a>
               </li>
               <li>
-                <a href="#duvidas" className="text-blue-200 hover:text-white transition-colors">
+                <a href="/#duvidas" className="text-blue-200 hover:text-white transition-colors">
                   Dúvidas
                 </a>
               </li>
               <li>
-                <a href="#contato" className="text-blue-200 hover:text-white transition-colors">
+                <a href="/#contato" className="text-blue-200 hover:text-white transition-colors">
                   Contato
                 </a>
               </li>
@@ -53,7 +53,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="pt-2 border-t border-blue-800">
-                <a href="#parceiros" className="text-yellow-400 hover:text-yellow-300 transition-colors">
+                <a href="/#parceiros" className="text-yellow-400 hover:text-yellow-300 transition-colors">
                   É empresa de emplacamento? Clique aqui
                 </a>
               </li>

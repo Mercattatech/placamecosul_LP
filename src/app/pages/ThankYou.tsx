@@ -1,9 +1,16 @@
+import { useEffect } from "react";
+import { Link } from "react-router";
 import { CheckCircle2, AlertTriangle, Phone, Mail, ArrowLeft } from "lucide-react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import logoPlacaMercosul from "figma:asset/57bdf21bb52564097625e6c71a1731475661ae9e.png";
 
 export function ThankYou() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Solicitação Recebida | PlacaMercosul';
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
@@ -14,11 +21,13 @@ export function ThankYou() {
           {/* Logo e Título */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-6">
-              <img 
-                src={logoPlacaMercosul} 
-                alt="PlacaMercosul" 
-                className="h-32 w-auto"
-              />
+              <Link to="/">
+                <img 
+                  src={logoPlacaMercosul} 
+                  alt="PlacaMercosul" 
+                  className="h-32 w-auto hover:opacity-90 transition-opacity"
+                />
+              </Link>
             </div>
             
             <div className="flex justify-center mb-4">
@@ -121,13 +130,13 @@ export function ThankYou() {
 
           {/* Botão Voltar */}
           <div className="text-center">
-            <a 
-              href="/" 
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors"
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               Voltar para a página inicial
-            </a>
+            </Link>
           </div>
         </div>
       </main>
