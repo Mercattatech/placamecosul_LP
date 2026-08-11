@@ -18,6 +18,14 @@ export const router = createBrowserRouter([
     Component: ThankYou,
   },
   {
+    path: "/obrigado2",
+    Component: ThankYou,
+  },
+  {
+    path: "/obrigado2.html",
+    Component: ThankYou,
+  },
+  {
     path: "/admin-galeria",
     Component: AdminGallery,
   },

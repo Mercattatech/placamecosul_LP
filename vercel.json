@@ -1,5 +1,12 @@
 {
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/obrigado", "destination": "/obrigado2.html", "permanent": true },
+    { "source": "/obrigado.html", "destination": "/obrigado2.html", "permanent": true }
+  ],
   "rewrites": [
+    { "source": "/obrigado2", "destination": "/obrigado2.html" },
+    { "source": "/obrigado2.html", "destination": "/obrigado2.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

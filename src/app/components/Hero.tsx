@@ -80,7 +80,7 @@ export function Hero() {
       if (response.ok) {
         // 5. Evento: form_success
         analytics.formSuccess('hero');
-        navigate('/obrigado');
+        window.location.href = '/obrigado2.html';
       } else {
         // 6. Evento: form_error
         analytics.formError('hero', `HTTP ${response.status}`);

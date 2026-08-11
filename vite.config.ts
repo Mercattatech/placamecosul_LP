@@ -29,4 +29,12 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src/app'),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        obrigado2: path.resolve(__dirname, 'obrigado2.html'),
+      },
+    },
+  },
 })

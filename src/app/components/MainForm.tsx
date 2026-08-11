@@ -74,7 +74,7 @@ export function MainForm() {
 
       if (response.ok) {
         analytics.formSuccess('main');
-        navigate('/obrigado');
+        window.location.href = '/obrigado2.html';
       } else {
         analytics.formError('main', `HTTP ${response.status}`);
         alert("Erro ao enviar formulário. Por favor, tente novamente.");
